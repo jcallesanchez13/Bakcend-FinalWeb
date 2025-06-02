@@ -16,7 +16,7 @@ const registrarTransaccion = (req, res) => {
 
 
 const obtenerTransacciones = (req, res) => {
-  const { usuario_id } = req.params;
+  const { usuario_id } = req.query;
 
   const consulta = `
     SELECT t.*, c.nombre AS categoria
@@ -34,7 +34,7 @@ const obtenerTransacciones = (req, res) => {
 const eliminarTransaccion = (req, res) => {
   const id = req.params.id;
   const consulta = 'DELETE FROM transacciones WHERE id = ?';
-  db.query(consulta, [id], (error, resultado) => {
+  conexion.query(consulta, [id], (error, resultado) => {
     if (error) {
       res.status(500).json({ mensaje: 'Error al eliminar transacción', error });
     } else {
@@ -47,4 +47,3 @@ module.exports = {
   obtenerTransacciones,
   eliminarTransaccion
 };
-
