@@ -18,7 +18,7 @@ app.use('/usuarios', rutasUsuarios);
 app.use('/categorias', rutasCategorias);
 app.use('/transacciones', rutasTransacciones);
 app.use('/analisis', rutasAnalisis);
-
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Servidor backend de Finanzas Personales funcionando correctamente.');
